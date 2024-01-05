@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post {
+public class Worker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String tittle;
-    private String description;
-    private String Content;
+    private double Attendence;
+    private double overtime;
+    private double wagesPerday;
 }
