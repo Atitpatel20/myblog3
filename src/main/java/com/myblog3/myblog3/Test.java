@@ -32,6 +32,7 @@ public class Test {
 //        System.out.println(data1);
 //        System.out.println(data2);
 //        System.out.println(data3);
+
            // find the length of given string
 //       Function<String,Integer> data= str->str.length();
 //        Integer result = data.apply("keshav");
@@ -65,9 +66,26 @@ public class Test {
 //        System.out.println(data1);
 
         // remove duplicate number & sort the number in asending order
-        List<Integer> integers = Arrays.asList(10, 20, 36, 20, 45, 30, 30, 25, 69);
-        List<Integer> numbers = integers.stream().sorted().distinct().collect(Collectors.toList());
-        System.out.println(numbers);
+//        List<Integer> integers = Arrays.asList(10, 20, 36, 20, 45, 30, 30, 25, 69);
+//        List<Integer> numbers = integers.stream().sorted().distinct().collect(Collectors.toList());
+//        System.out.println(numbers);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 }
