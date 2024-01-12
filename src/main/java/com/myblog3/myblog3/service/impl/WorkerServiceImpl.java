@@ -1,6 +1,7 @@
 package com.myblog3.myblog3.service.impl;
 
 import com.myblog3.myblog3.entity.Worker;
+import com.myblog3.myblog3.exception.ResourceNotFoundException;
 import com.myblog3.myblog3.payload.WorkerDto;
 import com.myblog3.myblog3.repository.WorkerRepository;
 import com.myblog3.myblog3.service.WorkerService;
@@ -29,5 +30,15 @@ public class WorkerServiceImpl implements WorkerService {
         dto.setOvertime(savedetailes.getOvertime());
 
         return dto;
+    }
+    @Override
+    public WorkerDto getWorkerById(long id) {
+       Worker worker= workerRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("No worker found with id: "+id));
+        WorkerDto dto= new WorkerDto();
+        dto.setId(worker.getId());
+        dto.setAttendence(worker.getAttendence());
+        dto.setWagesPerday(worker.getWagesPerday());
+        dto.setOvertime(worker.getOvertime());
+       return dto;
     }
 }
