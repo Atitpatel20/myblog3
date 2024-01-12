@@ -15,14 +15,26 @@ public class Stream_Sorting_Example {
         List<Integer> reverseNumber = data1.stream().sorted((s1, s2) -> Integer.compare(s2, s1)).collect(Collectors.toList());
         System.out.println("reverseNumber:"+reverseNumber);
 
-        // Q-2 sort the elements numbers of a stream in ascending order first & then descending order
+
+        // Q-2  all the names in sorting in assending order
+        List<String> names = Arrays.asList("akash", "miral", "jainil", "neel");
+        List<String> result = names.stream().sorted().collect(Collectors.toList());
+        System.out.println(result);
+
+        // Q-3 remove duplicate number & sort the number in asending order
+        List<Integer> integers = Arrays.asList(10, 20, 36, 20, 45, 30, 30, 25, 69);
+        List<Integer> numbers = integers.stream().sorted().distinct().collect(Collectors.toList());
+        System.out.println(numbers);
+
+        // Q-4 sort the elements numbers of a stream in ascending order first & then descending order
         List<String> fruits = Arrays.asList("apple", "banana", "orange", "mango", "chiku");
         List<String> sortedFruits = fruits.stream().sorted().collect(Collectors.toList());
         System.out.println("sortedFruits"+sortedFruits);
 
         List<String> reverseFruits = fruits.stream().sorted((s1, s2) -> s2.compareTo(s1)).collect(Collectors.toList());
         System.out.println("reverseFruits;"+reverseFruits);
-        // Q-3 sort by first age ascending order
+
+        // Q-5 sort by first age ascending order
         // sort by second age descending order
         // sort by third name descending order
         List<Person> data3 = Arrays.asList(

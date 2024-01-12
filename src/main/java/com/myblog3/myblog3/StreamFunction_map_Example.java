@@ -2,6 +2,7 @@ package com.myblog3.myblog3;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamFunction_map_Example {
@@ -37,5 +38,39 @@ public class StreamFunction_map_Example {
         List<Integer> data5 = Arrays.asList(1, 2, 3, 4, 5);
         List<String> result6 = data5.stream().map(str -> "Numbers:" + str).collect(Collectors.toList());
         System.out.println(result6);
+        // Q- 6 add value in +10 to any value and give the output
+       Function<Integer,Integer> val= i->i+10;
+        Integer result = val.apply(26);
+        System.out.println(result);
+
+        // Q-7 add 20 with all numbers in given list(10,25,39,14,25)
+        List<Integer> numbers = Arrays.asList(10, 25, 39, 14, 25);
+        List<Integer> result7 = numbers.stream().map(i -> i + 10).collect(Collectors.toList());
+        System.out.println(result7);
+
+        //Q-8 i wnat all the names in upper case& lower case letter("bhavin","mike","statllin","axay")
+        List<String> names = Arrays.asList("bhavin", "mike", "statllin", "axay");
+        List<String> names8 = names.stream().map(str -> str.toUpperCase()).collect(Collectors.toList());
+        List<String> names9 = names.stream().map(str -> str.toLowerCase()).collect(Collectors.toList());
+        System.out.println(names8);
+        System.out.println(names9);
+
+        // map example
+
+//        // Q-1 find the length of given string
+        Function<String,Integer> val9= str->str.length();
+        Integer val10 = val9.apply("manan");
+        System.out.println(val10);
+
+        //Q-2 add value in +10 to any value and give the output
+        Function<Integer,Integer>val11=i->i+10;
+        Integer val12 = val11.apply(36);
+        System.out.println(val12);
+
+        // Q-3 add 20 with all numbers in given list(10,25,39,14,25)
+        List<Integer> data6 = Arrays.asList(10, 25, 39, 14, 25);
+        List<Integer> data7 = data6.stream().map(i -> i + 20).collect(Collectors.toList());
+        System.out.println(data7);
+
     }
 }
