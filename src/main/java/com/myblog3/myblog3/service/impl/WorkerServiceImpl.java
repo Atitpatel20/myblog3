@@ -5,6 +5,9 @@ import com.myblog3.myblog3.exception.ResourceNotFoundException;
 import com.myblog3.myblog3.payload.WorkerDto;
 import com.myblog3.myblog3.repository.WorkerRepository;
 import com.myblog3.myblog3.service.WorkerService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,33 +32,40 @@ public class WorkerServiceImpl implements WorkerService {
 
         return dto;
     }
+
     @Override
     public WorkerDto getWorkerById(long id) {
-       Worker worker= workerRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("No worker found with id: "+id));
+        Worker worker = workerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No worker found with id: " + id));
         WorkerDto dto = mapToDto(worker);
         return dto;
     }
 
     @Override
-    public List<WorkerDto> getAllWorkers() {
-        List<Worker> workers = workerRepository.findAll();
+    public List<WorkerDto> getAllWorkers(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Worker> pageWorker = workerRepository.findAll(pageable);
+        List<Worker> workers = pageWorker.getContent();
         List<WorkerDto> workerDtos = workers.stream().map(w -> mapToDto(w)).collect(Collectors.toList());
         return workerDtos;
     }
-    WorkerDto mapToDto(Worker worker){
-        WorkerDto dto= new WorkerDto();
+
+    WorkerDto mapToDto(Worker worker) {
+        WorkerDto dto = new WorkerDto();
         dto.setId(worker.getId());
+        dto.setName(worker.getName());
         dto.setAttendence(worker.getAttendence());
         dto.setWagesPerday(worker.getWagesPerday());
         dto.setOvertime(worker.getOvertime());
         return dto;
     }
-   Worker mapToEntity(WorkerDto workerDto){
-       Worker workers= new Worker();
-       workers.setId(workerDto.getId());
-       workers.setAttendence(workerDto.getAttendence());
-       workers.setWagesPerday(workerDto.getWagesPerday());
-       workers.setOvertime(workerDto.getOvertime());
-      return workers;
+
+    Worker mapToEntity(WorkerDto workerDto) {
+        Worker workers = new Worker();
+        workers.setId(workerDto.getId());
+        workers.setName(workerDto.getName());
+        workers.setAttendence(workerDto.getAttendence());
+        workers.setWagesPerday(workerDto.getWagesPerday());
+        workers.setOvertime(workerDto.getOvertime());
+        return workers;
     }
 }

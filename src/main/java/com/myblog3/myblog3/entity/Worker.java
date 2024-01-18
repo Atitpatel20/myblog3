@@ -15,6 +15,7 @@ public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String name;
     private double Attendence;
     private double overtime;
     private double wagesPerday;

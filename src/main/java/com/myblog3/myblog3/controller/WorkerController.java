@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/worker")
+@RequestMapping("/api/workers")
 public class WorkerController {
 
     private WorkerService workerService;
@@ -28,9 +28,13 @@ public class WorkerController {
         WorkerDto dto = workerService.getWorkerById(id);
         return new ResponseEntity<>(dto,HttpStatus.OK);
     }
+    // http://localhost:8080/api/workers?pageNo=0&pageSize=3
     @GetMapping
-    public List<WorkerDto> getAllWorkers(){
-        List<WorkerDto> workerDtos=workerService.getAllWorkers();
+    public List<WorkerDto> getAllWorkers(
+            @RequestParam(name="pageNo",required = false,defaultValue = "0")int pageNo,
+            @RequestParam(name="pageSize",required = false,defaultValue = "0")int pageSize
+    ){
+        List<WorkerDto> workerDtos=workerService.getAllWorkers(pageNo,pageSize);
         return workerDtos;
     }
 }
