@@ -28,13 +28,15 @@ public class WorkerController {
         WorkerDto dto = workerService.getWorkerById(id);
         return new ResponseEntity<>(dto,HttpStatus.OK);
     }
-    // http://localhost:8080/api/workers?pageNo=0&pageSize=3
+    // http://localhost:8080/api/workers?pageNo=0&pageSize=3&sortBy=name&sortDir=Desc
     @GetMapping
     public List<WorkerDto> getAllWorkers(
             @RequestParam(name="pageNo",required = false,defaultValue = "0")int pageNo,
-            @RequestParam(name="pageSize",required = false,defaultValue = "0")int pageSize
+            @RequestParam(name="pageSize",required = false,defaultValue = "0")int pageSize,
+            @RequestParam(name="sortBy",required = false,defaultValue = "id")String sortBy,
+            @RequestParam(name="sortDir",required = false,defaultValue = "id")String sortDir
     ){
-        List<WorkerDto> workerDtos=workerService.getAllWorkers(pageNo,pageSize);
+        List<WorkerDto> workerDtos=workerService.getAllWorkers(pageNo,pageSize,sortBy,sortDir);
         return workerDtos;
     }
 }

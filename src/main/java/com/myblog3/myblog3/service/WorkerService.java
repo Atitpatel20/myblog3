@@ -9,5 +9,5 @@ public interface WorkerService  {
 
     WorkerDto getWorkerById(long id);
 
-    List<WorkerDto> getAllWorkers(int pageNo, int pageSize);
+    List<WorkerDto> getAllWorkers(int pageNo, int pageSize, String sortBy, String sortDir);
 }

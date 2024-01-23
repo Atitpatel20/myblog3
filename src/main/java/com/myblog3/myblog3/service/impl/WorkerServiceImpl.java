@@ -8,6 +8,7 @@ import com.myblog3.myblog3.service.WorkerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,8 +42,9 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public List<WorkerDto> getAllWorkers(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
+    public List<WorkerDto> getAllWorkers(int pageNo, int pageSize, String sortBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy) : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(pageNo,pageSize,sort);
         Page<Worker> pageWorker = workerRepository.findAll(pageable);
         List<Worker> workers = pageWorker.getContent();
         List<WorkerDto> workerDtos = workers.stream().map(w -> mapToDto(w)).collect(Collectors.toList());
