@@ -5,23 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
-@Table(name="workerinfo")
+@Table(name="worklog")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Worker {
+public class WorkLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-    private double attendance;
-    private double overtime;
-    private double wagesPerDay;
+    private String date;
+    private double hours;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "worker")
-    private List<WorkLog> workLogs;
+    @ManyToOne
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
 }

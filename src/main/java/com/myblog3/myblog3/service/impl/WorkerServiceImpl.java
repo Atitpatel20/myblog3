@@ -55,8 +55,8 @@ public class WorkerServiceImpl implements WorkerService {
         WorkerDto dto = new WorkerDto();
         dto.setId(worker.getId());
         dto.setName(worker.getName());
-        dto.setAttendence(worker.getAttendence());
-        dto.setWagesPerday(worker.getWagesPerday());
+        dto.setAttendence(worker.getAttendance());
+        dto.setWagesPerday(worker.getWagesPerDay());
         dto.setOvertime(worker.getOvertime());
         return dto;
     }
@@ -65,8 +65,8 @@ public class WorkerServiceImpl implements WorkerService {
         Worker workers = new Worker();
         workers.setId(workerDto.getId());
         workers.setName(workerDto.getName());
-        workers.setAttendence(workerDto.getAttendence());
-        workers.setWagesPerday(workerDto.getWagesPerday());
+        workers.setAttendance(workerDto.getAttendence());
+        workers.setWagesPerDay(workerDto.getWagesPerday());
         workers.setOvertime(workerDto.getOvertime());
         return workers;
     }
