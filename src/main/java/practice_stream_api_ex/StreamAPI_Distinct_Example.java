@@ -1,4 +1,4 @@
-package com.myblog3.myblog3;
+package practice_stream_api_ex;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,16 +15,16 @@ public class StreamAPI_Distinct_Example {
         System.out.println(result2);
 
         // Q- 2 remove duplicate people & print also duplicate people
-        List<Person> data2 = Arrays.asList(
-                new Person("kevin", 25, "Male"),
-                new Person("priya", 23, "Female"),
-                new Person("pravin", 55, "Male"),
-                new Person("Bhavna", 49, "Female"),
-                new Person("pravin", 55, "Male"),
-                new Person("priya", 23, "Female")
+        List<Stream_Sorting_Example.Person> data2 = Arrays.asList(
+                new Stream_Sorting_Example.Person("kevin", 25, "Male"),
+                new Stream_Sorting_Example.Person("priya", 23, "Female"),
+                new Stream_Sorting_Example.Person("pravin", 55, "Male"),
+                new Stream_Sorting_Example.Person("Bhavna", 49, "Female"),
+                new Stream_Sorting_Example.Person("pravin", 55, "Male"),
+                new Stream_Sorting_Example.Person("priya", 23, "Female")
 
         );
-        List<Person> result3 = data2.stream().distinct().collect(Collectors.toList());
+        List<Stream_Sorting_Example.Person> result3 = data2.stream().distinct().collect(Collectors.toList());
         System.out.println(result3);
         System.out.println(data2);
     }

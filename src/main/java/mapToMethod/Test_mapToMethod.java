@@ -1,10 +1,10 @@
-package com.myblog3.myblog3;
+package mapToMethod;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Test {
+public class Test_mapToMethod {
     public static void main(String[] args) {
         List<Login> logins = Arrays.asList(
                 new Login("mike", "testing"),

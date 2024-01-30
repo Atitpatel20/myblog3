@@ -1,4 +1,4 @@
-package com.myblog3.myblog3;
+package practice_stream_api_ex;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,11 +18,11 @@ public class StreamFunction_map_Example {
         System.out.println(result2);
 
         // Q-3 Given a list of Person objects, map each person to their age.
-        List<Person> data3 = Arrays.asList(
-                new Person("kevin", 25, "Male"),
-                new Person("pravin", 55, "Male"),
-                new Person("Bhavna", 49, "Female"),
-                new Person("priya", 2, "Female")
+        List<Stream_Sorting_Example.Person> data3 = Arrays.asList(
+                new Stream_Sorting_Example.Person("kevin", 25, "Male"),
+                new Stream_Sorting_Example.Person("pravin", 55, "Male"),
+                new Stream_Sorting_Example.Person("Bhavna", 49, "Female"),
+                new Stream_Sorting_Example.Person("priya", 2, "Female")
         );
 
         List<Integer> result4 = data3.stream().map(str -> str.getAge()).collect(Collectors.toList());

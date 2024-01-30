@@ -1,9 +1,10 @@
-package com.myblog3.myblog3;
+package practice_stream_api_ex;
+
+import lombok.Data;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Stream_Sorting_Example {
     public static void main(String[] args) {
@@ -51,5 +52,17 @@ public class Stream_Sorting_Example {
 
         List<Person> sortedByName = data3.stream().sorted((s1, s2) -> s2.getName().compareTo(s1.getName())).collect(Collectors.toList());
         System.out.println(sortedByName);
+    }
+
+    @Data
+    public static class Person {
+        private String name;
+        private int age;
+        private String gender;
+        public Person(String name, int age, String gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
     }
 }

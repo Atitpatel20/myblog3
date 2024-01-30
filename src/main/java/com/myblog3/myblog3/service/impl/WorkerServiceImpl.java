@@ -5,6 +5,7 @@ import com.myblog3.myblog3.exception.ResourceNotFoundException;
 import com.myblog3.myblog3.payload.WorkerDto;
 import com.myblog3.myblog3.repository.WorkerRepository;
 import com.myblog3.myblog3.service.WorkerService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,11 +19,12 @@ import java.util.stream.Collectors;
 public class WorkerServiceImpl implements WorkerService {
 
     private WorkerRepository workerRepository;
+    private ModelMapper modelMapper;
 
-    public WorkerServiceImpl(WorkerRepository workerRepository) {
+    public WorkerServiceImpl(WorkerRepository workerRepository,ModelMapper modelMapper) {
         this.workerRepository = workerRepository;
+        this.modelMapper=modelMapper;
     }
-
     @Override
     public WorkerDto createWorkerSalary(WorkerDto workerDto) {
         Worker workers = mapToEntity(workerDto);
@@ -52,22 +54,24 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     WorkerDto mapToDto(Worker worker) {
-        WorkerDto dto = new WorkerDto();
-        dto.setId(worker.getId());
-        dto.setName(worker.getName());
-        dto.setAttendence(worker.getAttendance());
-        dto.setWagesPerday(worker.getWagesPerDay());
-        dto.setOvertime(worker.getOvertime());
+        WorkerDto dto = modelMapper.map(worker, WorkerDto.class);
+//        WorkerDto dto = new WorkerDto();
+//        dto.setId(worker.getId());
+//        dto.setName(worker.getName());
+//        dto.setAttendence(worker.getAttendance());
+//        dto.setWagesPerday(worker.getWagesPerDay());
+//        dto.setOvertime(worker.getOvertime());
         return dto;
     }
 
     Worker mapToEntity(WorkerDto workerDto) {
-        Worker workers = new Worker();
-        workers.setId(workerDto.getId());
-        workers.setName(workerDto.getName());
-        workers.setAttendance(workerDto.getAttendence());
-        workers.setWagesPerDay(workerDto.getWagesPerday());
-        workers.setOvertime(workerDto.getOvertime());
+        Worker workers = modelMapper.map(workerDto, Worker.class);
+//        Worker workers = new Worker();
+//        workers.setId(workerDto.getId());
+//        workers.setName(workerDto.getName());
+//        workers.setAttendance(workerDto.getAttendence());
+//        workers.setWagesPerDay(workerDto.getWagesPerday());
+//        workers.setOvertime(workerDto.getOvertime());
         return workers;
     }
 }

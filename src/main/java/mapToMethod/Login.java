@@ -1,14 +1,11 @@
-package com.myblog3.myblog3;
+package mapToMethod;
 
-public class LoginDto {
+public class Login {
     private String userName;
     private String password;
 
-    public void setUserName(String userName) {
+    public Login(String userName, String password) {
         this.userName = userName;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -20,5 +17,3 @@ public class LoginDto {
         return password;
     }
 }
-
-

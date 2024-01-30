@@ -1,4 +1,4 @@
-package com.myblog3.myblog3;
+package debug_Test;
 
 public class DebugClass {
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class DebugClass {
     }
 
     private int test() {
-        int result = SampleClass.test1();
+        int result = Debug_SampleClass.test1();
         return result;
     }
 }

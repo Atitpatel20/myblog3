@@ -1,4 +1,4 @@
-package com.myblog3.myblog3;
+package practice_stream_api_ex;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +13,13 @@ public class StreamPredicate_fiter_Example {
         System.out.println(result1);
 
         //  Q-2 Given a list of Person objects, filter out persons older than 30.
-        List<Person> data2 = Arrays.asList(
-                new Person("kevin", 25, "Male"),
-                new Person("pravin", 55, "Male"),
-                new Person("Bhavna", 49, "Female"),
-                new Person("priya", 23, "Female")
+        List<Stream_Sorting_Example.Person> data2 = Arrays.asList(
+                new Stream_Sorting_Example.Person("kevin", 25, "Male"),
+                new Stream_Sorting_Example.Person("pravin", 55, "Male"),
+                new Stream_Sorting_Example.Person("Bhavna", 49, "Female"),
+                new Stream_Sorting_Example.Person("priya", 23, "Female")
         );
-        List<Person> result2 = data2.stream().filter(str -> str.getAge() < 30).collect(Collectors.toList());
+        List<Stream_Sorting_Example.Person> result2 = data2.stream().filter(str -> str.getAge() < 30).collect(Collectors.toList());
         System.out.println(result2);
 
 
@@ -35,13 +35,13 @@ public class StreamPredicate_fiter_Example {
         System.out.println(result5);
 
         // Q-4 Given a list of Person objects, filter out females.
-        List<Person> people= Arrays.asList(
-                new Person("kevin", 25, "Male"),
-                new Person("pravin", 55, "Male"),
-                new Person("Bhavna", 49, "Female"),
-                new Person("priya", 23, "Female")
+        List<Stream_Sorting_Example.Person> people= Arrays.asList(
+                new Stream_Sorting_Example.Person("kevin", 25, "Male"),
+                new Stream_Sorting_Example.Person("pravin", 55, "Male"),
+                new Stream_Sorting_Example.Person("Bhavna", 49, "Female"),
+                new Stream_Sorting_Example.Person("priya", 23, "Female")
         );
-        List<Person> result6 = people.stream().filter(str -> str.getGender().equals("Male")).collect(Collectors.toList());
+        List<Stream_Sorting_Example.Person> result6 = people.stream().filter(str -> str.getGender().equals("Male")).collect(Collectors.toList());
         System.out.println(result6);
 
 

@@ -24,4 +24,17 @@ public class WorkLogController {
         WorkLogDto worklogs = workLogService.createWorklogs(workLogDto, workerId);
         return new ResponseEntity<>(worklogs, HttpStatus.CREATED);
     }
+
+    // http://localhost:8080/api/worklog/2
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteWorklogById(@PathVariable long id) {
+        workLogService.deleteWorklogById(id);
+        return new ResponseEntity<>("Record is deleteed!!", HttpStatus.OK);
+    }
+    //http://localhost:8080/api/worklog/2
+    @PutMapping("/{id}")
+    public ResponseEntity<WorkLogDto> updateWorkLogById(@PathVariable long id, @RequestBody WorkLogDto workLogDto) {
+        WorkLogDto workLogDtos = workLogService.updateWorkLogById(id, workLogDto);
+        return new ResponseEntity<>(workLogDtos, HttpStatus.OK);
+    }
 }

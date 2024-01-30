@@ -1,8 +1,8 @@
-package com.myblog3.myblog3;
+package debug_Test;
 
-public class SampleClass {
+public class Debug_SampleClass {
     public static int test1() {
-        SampleClass sampleClass= new SampleClass();
+        Debug_SampleClass sampleClass= new Debug_SampleClass();
         int otp = sampleClass.returnOtp();
         System.out.println(100);
         System.out.println(200);

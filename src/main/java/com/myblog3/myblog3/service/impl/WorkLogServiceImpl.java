@@ -36,4 +36,25 @@ public class WorkLogServiceImpl implements WorkLogService {
         return dto;
 
     }
+
+    @Override
+    public void deleteWorklogById(long id) {
+        workLogRepository.deleteById(id);
+    }
+
+    @Override
+    public WorkLogDto updateWorkLogById(long id, WorkLogDto workLogDto) {
+        WorkLog workLog = workLogRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Worker not found with id:" + id)
+        );
+        workLog.setId(workLogDto.getId());
+        workLog.setDate(workLogDto.getDate());
+        workLog.setHours(workLogDto.getHours());
+        WorkLog update = workLogRepository.save(workLog);
+        WorkLogDto dto= new WorkLogDto();
+        dto.setId(update.getId());
+        dto.setHours(update.getHours());
+        dto.setDate(update.getDate());
+        return dto;
+    }
 }
