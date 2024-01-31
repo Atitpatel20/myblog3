@@ -7,5 +7,5 @@ public interface WorkLogService {
 
     void deleteWorklogById(long id);
 
-    WorkLogDto updateWorkLogById(long id, WorkLogDto workLogDto);
+    WorkLogDto updateWorkLogById(long id, WorkLogDto workLogDto, long workerId);
 }

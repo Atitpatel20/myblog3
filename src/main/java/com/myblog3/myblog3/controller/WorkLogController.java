@@ -31,10 +31,10 @@ public class WorkLogController {
         workLogService.deleteWorklogById(id);
         return new ResponseEntity<>("Record is deleteed!!", HttpStatus.OK);
     }
-    //http://localhost:8080/api/worklog/2
-    @PutMapping("/{id}")
-    public ResponseEntity<WorkLogDto> updateWorkLogById(@PathVariable long id, @RequestBody WorkLogDto workLogDto) {
-        WorkLogDto workLogDtos = workLogService.updateWorkLogById(id, workLogDto);
+    //http://localhost:8080/api/worklog/2/worker/2
+    @PutMapping("/{id}/worker/{workerId}")
+    public ResponseEntity<WorkLogDto> updateWorkLogById(@PathVariable long id, @RequestBody WorkLogDto workLogDto,@PathVariable long workerId) {
+        WorkLogDto workLogDtos = workLogService.updateWorkLogById(id, workLogDto,workerId);
         return new ResponseEntity<>(workLogDtos, HttpStatus.OK);
     }
 }
