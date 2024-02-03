@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class WorkerDto {
     private long id;
     private String name;
-    private double Attendence;
+    private double attendance;
     private double overtime;
-    private double wagesPerday;
+    private double wagesPerDay;
 }

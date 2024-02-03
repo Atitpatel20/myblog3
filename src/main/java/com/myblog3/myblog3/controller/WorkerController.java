@@ -4,6 +4,7 @@ import com.myblog3.myblog3.payload.WorkerDto;
 import com.myblog3.myblog3.service.WorkerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class WorkerController {
         this.workerService = workerService;
     }
 
+//    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<WorkerDto>createWorkerSalary(@RequestBody WorkerDto workerDto){
         WorkerDto workerSalary = workerService.createWorkerSalary(workerDto);
@@ -32,9 +34,9 @@ public class WorkerController {
     @GetMapping
     public List<WorkerDto> getAllWorkers(
             @RequestParam(name="pageNo",required = false,defaultValue = "0")int pageNo,
-            @RequestParam(name="pageSize",required = false,defaultValue = "0")int pageSize,
+            @RequestParam(name="pageSize",required = false,defaultValue = "3")int pageSize,
             @RequestParam(name="sortBy",required = false,defaultValue = "id")String sortBy,
-            @RequestParam(name="sortDir",required = false,defaultValue = "id")String sortDir
+            @RequestParam(name="sortDir",required = false,defaultValue = "asc")String sortDir
     ){
         List<WorkerDto> workerDtos=workerService.getAllWorkers(pageNo,pageSize,sortBy,sortDir);
         return workerDtos;
